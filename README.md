@@ -1,17 +1,48 @@
-# DigitalStack360 desktop releases
+# DigitalStack360 Desktop
 
-Auto-update artifacts for the DigitalStack360 desktop app.
+A lightweight, always-on desktop companion for your DigitalStack360 workspace.
 
-The source repository (`espradley/digitalstack360`) is private. This public
-repo exists so the in-app updater can fetch signed artifacts and the
-`latest.json` feed over plain HTTPS without authentication.
+**[Download the latest version](https://digitalstack360.com/download)**
 
-Releases here are tagged `desktop-vX.Y.Z` and published by the
-`Release Desktop` GitHub Actions workflow in the source repo. Each
-release contains:
+---
 
-- macOS DMG installers (Apple Silicon + Intel)
-- Windows NSIS `-setup.exe` installer
-- Tauri updater artifacts (`.app.tar.gz` for macOS, `.nsis.zip` for
-  Windows) + matching `.sig` signatures
-- `latest.json` feed consumed by the desktop app on auto-check
+## Features
+
+**Always-on timer**
+Start, pause, and stop time entries from a tray-anchored window. Pre-fill project, category, and billable status. Entries sync to your workspace automatically, even offline.
+
+**Activity Assist**
+Opt-in passive capture logs the apps and window titles you actually work in — never screenshots or keystrokes. The engine clusters your day into time blocks, scores them against your DigitalStack projects, and drafts entry descriptions you can edit and submit in seconds.
+
+**Privacy by default**
+Activity Assist is off until you enable it. Raw events stay on your device. Set your own retention window (7, 30, 90 days, or keep forever) and delete anything at any time.
+
+**.dstack document viewer**
+Open `.dstack` engagement bundles natively. Read manifests, content, and bindings without uploading the file anywhere.
+
+**Native notifications**
+Get notified about review requests, approvals, and stream activity from the OS notification center. Click to jump straight to the right page.
+
+**Auto-update**
+New versions download in the background. A non-blocking banner lets you restart when it suits you. Active timers are saved cleanly across the relaunch.
+
+---
+
+## Download
+
+Visit **[digitalstack360.com/download](https://digitalstack360.com/download)** for OS-detected downloads and installation instructions.
+
+| Platform | Format |
+|---|---|
+| macOS Apple Silicon (M1/M2/M3/M4) | `.dmg` |
+| macOS Intel | `.dmg` |
+| Windows x64 | `.exe` installer |
+| Linux x64 | `.AppImage` |
+
+> **Beta note:** Builds are currently unsigned. macOS will show an "unidentified developer" warning on first launch — right-click the app → Open to bypass it (one-time). Windows will show a SmartScreen warning — click "More info" → "Run anyway". Future signed builds will skip these entirely.
+
+---
+
+## Changelog
+
+See [CHANGELOG.md](https://github.com/espradley/digitalstack360-desktop-releases/blob/main/CHANGELOG.md) for the full version history.
