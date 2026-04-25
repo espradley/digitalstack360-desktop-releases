@@ -5,6 +5,13 @@ Versions follow [Semantic Versioning](https://semver.org).
 
 ---
 
+## [1.0.3] — 2026-04-25
+
+### Fixes
+- Windows and Linux downloads now appear on the download page. Tauri v2 signs both the Windows installer (`.exe`) and Linux AppImage directly rather than wrapping them in a tarball. The build pipeline has been updated to stage and publish the correct artifacts and wire them into the auto-update feed.
+
+---
+
 ## [1.0.2] — 2026-04-25
 
 ### Fixes
