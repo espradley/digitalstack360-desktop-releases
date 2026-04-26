@@ -5,6 +5,22 @@ Versions follow [Semantic Versioning](https://semver.org).
 
 ---
 
+## [1.1.0] — 2026-04-25
+
+### What's new
+
+- **Time Hub** — Work now has a single unified **Time** section replacing the separate My Time and Activity tabs. Inside Time: an **Entries** tab for submitted records, a **Timer** tab for fast manual entry, an **Activity Review** tab for the full Activity Assist experience, and a **Rules** tab for managing domain/app/title routing rules.
+- **Tray menu updated** — Right-click now shows *Open Time*, *Review Activity*, and *Sync Activity* at the top. Left-click opens the Time Hub panel directly.
+- **Activity auto-assignment** — Activity Assist now automatically assigns time blocks to the correct project when DigitalStack is the active window, with 100% confidence. No manual tagging needed for work done inside the app.
+- **Smarter activity clustering** — Meeting apps (Zoom, Teams, etc.) always create a task boundary. Sustained switches to a different app (3+ minutes) split untagged blocks, while brief context switches under a minute are absorbed. This produces cleaner, more accurate suggested tasks.
+- **OS window titles** — The desktop app now tracks which project and section you are in. This powers the auto-assignment above and improves activity summaries.
+
+### Fixes
+
+- Activity project assignments now persist correctly across re-analysis. Re-running inference no longer clears previously assigned projects.
+
+---
+
 ## [1.0.3] — 2026-04-25
 
 ### Fixes
