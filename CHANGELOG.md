@@ -5,6 +5,39 @@ Versions follow [Semantic Versioning](https://semver.org).
 
 ---
 
+## [1.2.0] — 2026-04-29
+
+### What's new
+
+- **Meeting presence detection** — DigitalStack now recognises when you're in a Google Meet, Zoom, Microsoft Teams, Webex, or Slack huddle.  Detection survives task-switching with a 120-second sticky window, catches Meet picture-in-picture popups and background tabs, and surfaces the meeting topic alongside the matched project.  Sessions now record meeting context so AI summarisation can reason about overlap.
+- **Activity Rules drive detection** — your Time → Rules entries now flow into the desktop's matcher.  Title-token rules catch window titles and document content; **domain rules** (new) catch browser surfaces by hostname; **app rules** (new) catch native tools like Cursor or VS Code.  The customer's `clientName` is auto-added as a default alias per project.
+- **Possible-mismatch banner with one-click reassign** — when a session was tracked to one project but evidence pointed to another, the session card flags it.  A single click moves the session to the detected project; an audit row records the change.  Detected fields stay untouched as evidence.
+- **Browser Automation in Privacy & Permissions** — a third permission card explains and unlocks live URL detection in Chrome / Safari.  Required for project / ticket / meeting detection on browser-based work; auto-probed in the background once granted.
+- **Ticket detection from in-app navigation** — clicking through DigitalStack tickets in the desktop app now surfaces the ticket key without requiring browser-style URLs.  The accessibility tree's web-area URL fills in.
+- **Selected vs Detected separation** — the timer's chosen project (authoritative) is now distinct from what we infer from window titles / URLs (evidence).  When they disagree, that's a signal the AI can reason about, not a bug.
+
+### Under the hood
+
+- New Privacy & Permissions card surfaces Browser Automation explicitly so the macOS prompt doesn't appear unannounced.
+- Automation grants persist across app launches (TCC state was always there; we now read it).
+- Project rules sync from the main webview every 60 seconds so detection works even when the timer dock is closed.
+- Backfill action (dev-only) replays local activity events through the matchers to populate older sessions.
+
+---
+
+## [1.1.2] — 2026-04-26
+
+### What's new
+
+- **Time Dock** — A tray-anchored floating window gives you a live timer, one-click project switching, and instant entry submission without opening the main app. Choose *Compact* (timer + single project) or *Full* (all projects) mode from the dock itself. Favorites, quick-apply, and entry history are coming in the next update.
+- **Execute module** — The desktop app now streams project execution updates in real time. Start, pause, and monitor long-running tasks directly from the tray window.
+
+### Fixes
+
+- Idle timer color contrast improved — the elapsed-time display is now clearly readable against the dark dock background.
+
+---
+
 ## [1.1.0] — 2026-04-25
 
 ### What's new
