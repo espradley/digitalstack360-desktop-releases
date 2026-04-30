@@ -5,6 +5,16 @@ Versions follow [Semantic Versioning](https://semver.org).
 
 ---
 
+## [1.2.1] — 2026-04-29
+
+### Fixes
+
+- **Auto-update signature verification** — 1.2.0's release artifacts were signed with a CI key that didn't match the app's embedded updater public key, so the in-app "Update available" banner failed at the verification step.  1.2.1 ships with the correct signing key restored in CI.  Users on 1.1.2 and 1.2.0 will auto-update to 1.2.1 normally.  Anyone on 1.2.0 who got stuck can also grab 1.2.1 manually from the download page.
+
+  No code or feature changes from 1.2.0 — same release, correctly signed.
+
+---
+
 ## [1.2.0] — 2026-04-29
 
 ### What's new
