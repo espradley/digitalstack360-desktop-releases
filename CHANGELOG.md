@@ -5,6 +5,15 @@ Versions follow [Semantic Versioning](https://semver.org).
 
 ---
 
+## [1.2.2] — 2026-05-01
+
+### Fixes
+
+- **Time Dock — categories and contexts stuck on "Loading…"** — Production release builds were calling the apex `digitalstack360.com`, which Vercel 308-redirects to `www.`.  `fetch` strips the `Authorization` header on cross-origin redirects, so every `/api/desktop/*` request arrived at `www.` unauthenticated and 401'd.  Repointed release-build defaults at `https://www.digitalstack360.com` directly.  As an interim workaround, anyone on 1.2.1 can set `DIGITALSTACK_URL=https://www.digitalstack360.com` in their environment.
+- **Silent dock failures** — when category / project / work-target loads failed, the API client silently returned an empty list and the dock UI rendered "Loading…" indefinitely.  Errors are now surfaced inline in the Context and Category sections with a Retry button so failures are diagnosable without devtools.
+
+---
+
 ## [1.2.1] — 2026-04-29
 
 ### Fixes
