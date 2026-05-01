@@ -5,6 +5,14 @@ Versions follow [Semantic Versioning](https://semver.org).
 
 ---
 
+## [1.2.3] — 2026-05-01
+
+### Fixes
+
+- **Auto-update signature verification on macOS Apple Silicon** — 1.2.2's release pipeline produced two artifacts named `DigitalStack360.app.tar.gz` (one per architecture) and uploaded them to the same GitHub release with `--clobber`.  Whichever Mac runner finished second silently overwrote the other, so the URL served the wrong-architecture binary while the manifest signature was still pinned to the original.  Apple Silicon users got an Intel binary that failed verification.  The release workflow now namespaces the macOS bundle filenames per architecture (`DigitalStack360_aarch64.app.tar.gz` and `DigitalStack360_x86_64.app.tar.gz`) so the two never collide.  No code changes from 1.2.2 — same fixes, signed correctly per architecture.
+
+---
+
 ## [1.2.2] — 2026-05-01
 
 ### Fixes
