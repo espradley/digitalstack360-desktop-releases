@@ -5,6 +5,15 @@ Versions follow [Semantic Versioning](https://semver.org).
 
 ---
 
+## [1.3.1] — 2026-05-10
+
+### Fixes
+
+- **Window → Open Timer crash** — Two new plugins introduced in 1.3.0 (`tauri-plugin-window-state` and `window-vibrancy`) each caused the process to terminate when the timer dock was opened for the first time. `window-vibrancy` panics before the `WKWebView` finishes initialising; `tauri-plugin-window-state` panics when it encounters an `always_on_top` window with no prior saved state. Both have been removed pending a safe re-implementation.
+- **Delivery role seeding** — Eager-seed `delivery_roles` before role resolution to prevent missing-role errors on first project load.
+
+---
+
 ## [1.3.0] — 2026-05-09
 
 ### What's new
