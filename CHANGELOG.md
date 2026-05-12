@@ -5,6 +5,14 @@ Versions follow [Semantic Versioning](https://semver.org).
 
 ---
 
+## [1.3.2] — 2026-05-11
+
+### Fixes
+
+- **Auto-update download** — The `download_and_prepare_update` command was blocked by Tauri's ACL when called from the hosted main window (a remote-origin context). Added `updater:allow-download`, `updater:allow-install`, and an explicit app-command permission so the update flow completes correctly without an ACL error.
+
+---
+
 ## [1.3.1] — 2026-05-10
 
 ### Fixes
