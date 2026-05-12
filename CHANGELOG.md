@@ -5,6 +5,30 @@ Versions follow [Semantic Versioning](https://semver.org).
 
 ---
 
+## [1.3.5] — 2026-05-12
+
+### Fixes
+
+- **Release build compile error** — The `download_and_install` Rust closure signatures were wrong in the release-only code path (unreachable in dev builds, so it passed local compilation). First closure now correctly takes `(chunk, total)`, second returns `()` not `Result`. 1.3.3 and 1.3.4 both failed CI for this reason.
+
+---
+
+## [1.3.4] — 2026-05-12
+
+### Fixes
+
+- **Auto-update banner** — The background update check (`bootUpdateService`) uses the plugin's combined `downloadAndInstall` command, which requires `updater:allow-download-and-install`. 1.3.2 only granted `allow-download` and `allow-install` separately, so the download silently failed and the in-app banner never appeared. Permission now correctly granted.
+
+---
+
+## [1.3.3] — 2026-05-12
+
+### Fixes
+
+- **Check for Updates — native dialog** — "Check for Updates…" now shows a native macOS dialog with **Install & Restart** and **Later** buttons instead of relying on the timer dock being open to surface the action. The entire flow runs in Rust: the active timer is saved, the update is downloaded, installed, and the app restarts without requiring any webview window.
+
+---
+
 ## [1.3.2] — 2026-05-11
 
 ### Fixes
