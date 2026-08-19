@@ -5,6 +5,26 @@ Versions follow [Semantic Versioning](https://semver.org).
 
 ---
 
+## [1.5.0] — 2026-08-19
+
+First release carrying the **Program DI Daemon Installer** — the native
+capabilities that let this computer run AI executions locally. macOS only (the
+runtime is a launchd daemon); Windows and Linux builds ship the existing timer,
+activity, and viewer features unchanged.
+
+### Added
+
+- **Set up this computer / pairing** — the Desktop can enroll this machine with your workspace: it redeems a pairing code minted by the hosted app and installs the DigitalStack runtime as a managed background service (DI-1C sidecar, DI-2 pairing).
+- **Runtime status light** — the title bar shows whether this computer is ready to run AI work, driven by the composed server-side execution-readiness contract (DI-7): steady green when ready and idle, a gentle pulse while executions are active, amber when setup is needed, grey when readiness cannot be established. Click it to open the execution queue.
+- **Bundled runtime-host sidecar** — the runtime ships inside the app bundle and is invoked directly (never from `PATH`), so the Desktop always talks to the runtime it shipped with.
+
+### Notes
+
+- These native capabilities are macOS-only by design. On Windows/Linux the runtime-host commands are not present and the readiness light does not appear.
+- Builds remain unsigned in this release (right-click → Open on first launch); signing/notarization is tracked separately.
+
+---
+
 ## [1.3.5] — 2026-05-12
 
 ### Fixes
