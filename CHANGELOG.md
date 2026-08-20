@@ -5,6 +5,20 @@ Versions follow [Semantic Versioning](https://semver.org).
 
 ---
 
+## [1.6.2] — 2026-08-20
+
+**Fixes an app freeze that could happen right after signing in or updating.**
+Under a specific timing race, the whole app window could stop responding to
+any click — nothing was actually crashed, but nothing worked either, and the
+only way out was to force-quit. Fixed.
+
+### Fixed
+
+- The app could freeze completely, with every click unresponsive, if the menu-bar tray icon's once-a-second status update happened to overlap with the app checking your sign-in state — most likely right after sign-in or right after an app update relaunches. The two were contending for the same internal lock in a way that could deadlock them against each other. They no longer contend for it.
+- Launching the app used to leave a blank, unresponsive-looking window for up to 15–25 seconds while it loaded over the network, with no indication anything was happening. It now shows a small branded loading window immediately, which is replaced by the real app the moment it's actually ready.
+
+---
+
 ## [1.6.1] — 2026-08-20
 
 **Fixes Set Up This Computer, which crashed instantly in 1.6.0.** The bundled
