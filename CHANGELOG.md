@@ -5,6 +5,24 @@ Versions follow [Semantic Versioning](https://semver.org).
 
 ---
 
+## [1.6.5] — 2026-08-20
+
+**Repairs an already enrolled Runtime Host after its local AI toolchain changes.**
+An installed computer now remains identifiable as this computer when Claude
+Code or Git needs attention, and can recheck the local toolchain without
+pairing again.
+
+### Fixed
+
+- An enrolled Runtime Host with a missing Claude Code or Git prerequisite no
+  longer falls back to **Set Up This Computer**. It presents its real lifecycle
+  state and can refresh the discovered tool paths while retaining its host ID.
+- Desktop release metadata is now aligned at `1.6.5` across the package,
+  Tauri bundle, and native Cargo crate, so native diagnostics report the same
+  version that the updater and release artifacts use.
+
+---
+
 ## [1.6.4] — 2026-08-20
 
 **Fixes "Disconnect this computer," which failed instantly in 1.6.3.** It
