@@ -5,6 +5,23 @@ Versions follow [Semantic Versioning](https://semver.org).
 
 ---
 
+## [1.6.6] — 2026-08-20
+
+**Restores recovery controls for an enrolled Runtime Host when its readiness
+cannot be read.**
+
+### Fixed
+
+- A locally enrolled Runtime Host whose account ownership is confirmed now
+  retains **Disconnect** even when its server readiness check is unavailable.
+  A failed account-host inventory remains non-actionable.
+- **Reinstall Runtime** is now available for a confirmed enrolled computer.
+  It deliberately replaces and restarts the managed daemon through the
+  rollback-safe native installer, never accepts pairing material, and verifies
+  that the same host identity remains in place before refreshing readiness.
+
+---
+
 ## [1.6.5] — 2026-08-20
 
 **Repairs an already enrolled Runtime Host after its local AI toolchain changes.**
