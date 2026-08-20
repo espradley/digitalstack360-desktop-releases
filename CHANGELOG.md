@@ -5,6 +5,22 @@ Versions follow [Semantic Versioning](https://semver.org).
 
 ---
 
+## [1.6.1] — 2026-08-20
+
+**Fixes Set Up This Computer, which crashed instantly in 1.6.0.** The bundled
+runtime installer failed to start at all in the notarized 1.6.0 build,
+so Set Up This Computer could never get past its first step. 1.6.1 fixes it.
+
+### Fixed
+
+- The bundled runtime crashed immediately on launch under macOS's Hardened Runtime, which this app has been signed and notarized with since 1.6.0. It needed two additional entitlements to let its JavaScript engine start; it now has them.
+
+### Correction
+
+- 1.5.0 and 1.6.0 both said builds were unsigned. That was already out of date: builds have been signed with a real Apple Developer ID and notarized since before 1.6.0 shipped.
+
+---
+
 ## [1.6.0] — 2026-08-20
 
 **"Set Up This Computer" is now a real, one-click action.** 1.5.0 shipped the
