@@ -5,6 +5,30 @@ Versions follow [Semantic Versioning](https://semver.org).
 
 ---
 
+## [1.6.0] — 2026-08-20
+
+**"Set Up This Computer" is now a real, one-click action.** 1.5.0 shipped the
+bundled runtime and pairing; this release completes the chain it didn't yet
+have — the Desktop can now actually install and start the local runtime for
+you, not just enroll this machine. macOS only, unchanged from 1.5.0.
+
+### Added
+
+- **Set Up This Computer** — one action, on the Connected Providers page: pairs this machine if needed, installs the packaged runtime, registers it with launchd, starts it, and waits for it to report healthy. Replaces an existing legacy runtime service safely if one is registered, with no manual `launchctl`. If anything fails partway through, the previous working runtime (if any) is automatically restored rather than left half-migrated.
+- **Native capability check** — before attempting setup, the hosted page asks this Desktop build what it can actually do. An older installed Desktop that doesn't support this yet is told plainly to update, instead of failing in a confusing way.
+- **Execution readiness after setup** — once the runtime is installed and healthy, the page checks whether this computer is actually ready to run AI work (e.g. Claude Code signed in, git available) and shows a clear status: ready, or exactly what still needs attention.
+
+### Fixed
+
+- The desktop release pipeline's Intel build was requesting a macOS runner image GitHub had retired, which silently stalled every release before it could publish. Fixed.
+
+### Notes
+
+- These native capabilities are macOS-only by design. On Windows/Linux the runtime-host commands are not present and this action does not appear.
+- Builds remain unsigned in this release (right-click → Open on first launch); signing/notarization is tracked separately.
+
+---
+
 ## [1.5.0] — 2026-08-19
 
 First release carrying the **Program DI Daemon Installer** — the native
