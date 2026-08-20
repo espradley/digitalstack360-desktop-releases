@@ -5,6 +5,21 @@ Versions follow [Semantic Versioning](https://semver.org).
 
 ---
 
+## [1.6.3] — 2026-08-20
+
+**"Set Up This Computer" now recognizes an already-set-up machine, and you
+can disconnect one.** Previously the checkbox and button always appeared,
+even on a computer that was already fully working — clicking through the
+whole setup flow again was the only way to find that out. Now a working
+computer just says so, with a Disconnect action in its place.
+
+### Added
+
+- The Connected Providers page now checks, before showing any button, whether this computer is already set up and ready. If it is, that's what you see — not a checkbox and button that would just repeat work already done.
+- A "Disconnect this computer" action, available whenever this computer is enrolled. Disconnecting removes it from the account and clears its local runtime, and the normal setup checkbox/button return immediately afterward.
+
+---
+
 ## [1.6.2] — 2026-08-20
 
 **Fixes an app freeze that could happen right after signing in or updating.**
