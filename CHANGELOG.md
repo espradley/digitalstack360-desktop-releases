@@ -5,6 +5,18 @@ Versions follow [Semantic Versioning](https://semver.org).
 
 ---
 
+## [1.6.4] — 2026-08-20
+
+**Fixes "Disconnect this computer," which failed instantly in 1.6.3.** It
+correctly disconnected the account from the server, then always reported a
+generic error and left the local runtime behind. Fixed.
+
+### Fixed
+
+- "Disconnect this computer" always failed locally after successfully disconnecting on the server, reporting only "Unexpected error" and leaving the local runtime in place. The underlying step's status messages were landing in the same output the app reads as a single structured result, so that result never parsed. It's a clean structured result now.
+
+---
+
 ## [1.6.3] — 2026-08-20
 
 **"Set Up This Computer" now recognizes an already-set-up machine, and you
