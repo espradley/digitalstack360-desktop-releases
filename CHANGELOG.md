@@ -5,6 +5,28 @@ Versions follow [Semantic Versioning](https://semver.org).
 
 ---
 
+## [1.6.7] — 2026-08-21
+
+**Makes Runtime Host recovery actionable and preserves the configured computer
+while it is repaired.**
+
+### Fixed
+
+- Recheck now discovers Claude Code and Git from common Homebrew, Nix, version-manager,
+  and user-level install locations on macOS and Linux.
+- Reinstall Runtime preserves the enrolled host identity, credential, configured tool
+  paths, local concurrency limit, repositories, and MCP configuration. It now reports
+  a useful recovery boundary instead of a generic “Unexpected error.”
+
+### Added
+
+- **Advanced Runtime Settings** can verify absolute Claude Code and Git paths, set a
+  bounded local concurrency limit, and restart the same Runtime Host safely.
+- **Restart Runtime** verifies that the existing enrolled host returns with a fresh,
+  healthy heartbeat without replacing its managed runtime.
+
+---
+
 ## [1.6.6] — 2026-08-20
 
 **Restores recovery controls for an enrolled Runtime Host when its readiness
