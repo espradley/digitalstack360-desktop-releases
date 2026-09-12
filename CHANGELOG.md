@@ -5,6 +5,39 @@ Versions follow [Semantic Versioning](https://semver.org).
 
 ---
 
+## [1.7.1] — 2026-09-12
+
+**The shipping app installs its own runtime helper, and the runtime talks to
+DigitalStack through its machine door with its own identity.**
+
+### Added
+
+- The runtime helper ships inside the app and is registered by the app itself.
+  Set Up This Computer prepares it before pairing; macOS asks an administrator
+  to approve it once, and the page says so — "Installation requires
+  administrator approval" — with a button to the setting. Repair runtime
+  re-registers a helper that has stopped answering; disconnecting the computer
+  removes the registration.
+- Every call the runtime makes on its own behalf goes through the machine
+  ingress DigitalStack declares, and carries the computer's machine identity
+  (issued at pairing, stored in the login keychain, re-issued by Repair when
+  the edge refuses it, revoked with the registration). The ingress itself is
+  server-owned: a changed machine hostname reaches every installed runtime on
+  its next start or repair without anyone editing a profile.
+- Runtimes distinguishes "runtime helper needs repair", "no runtime connection
+  identity" and "runtime connection identity was revoked" from a plain
+  offline computer, each with the action the signed-in person can take.
+- `Repair Runtime` on This Computer: helper, then connection identity and
+  ingress, then the daemon — each only if broken.
+
+### Changed
+
+- Setup no longer pins whatever page origin the desktop happened to load; the
+  desktop is handed the machine ingress, and the profile records what the
+  control plane declares.
+- Requires macOS 13 or later (the helper is registered through the system
+  service manager introduced there).
+
 ## [1.7.0] — 2026-09-11
 
 **Set Up This Computer installs the runtime on its own, and DigitalStack shows
