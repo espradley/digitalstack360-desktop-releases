@@ -5,6 +5,35 @@ Versions follow [Semantic Versioning](https://semver.org).
 
 ---
 
+## [1.7.2] — 2026-09-12
+
+**An updated DigitalStack replaces the runtime it left behind, and the runtime
+helper can actually be reached.**
+
+### Fixed
+
+- Opening an updated DigitalStack on a Mac whose runtime was installed by an
+  earlier version now updates that runtime automatically ("Finishing a runtime
+  update…"). The check that was meant to notice the older build compared a
+  path shape that a normal install never has, so every upgrade since 1.6.x
+  left the previous daemon running.
+- The runtime helper's socket is created with an explicit mode. It was
+  inheriting launchd's default, which macOS treats as "root only" at connect
+  time, so every non-root client saw `Permission denied` and Repair could not
+  change it.
+- Native errors are shown as what they are ("Registration failed: Operation
+  not permitted") instead of "Unexpected error".
+- Repair Runtime and Reinstall Runtime no longer stop when the helper cannot
+  be made ready; the helper's state is reported alongside the runtime's own
+  repair. The installed-computer panel now offers "Open System Settings" when
+  the helper is waiting for an administrator.
+- Diagnostics keep the helper's connect error (EACCES versus ENOENT) and
+  report which runtime build launchd runs next to the build the app carries.
+
+See `docs/architecture/RUNTIME-HARDENING-RH0-INVESTIGATION.md`.
+
+---
+
 ## [1.7.1] — 2026-09-12
 
 **The shipping app installs its own runtime helper, and the runtime talks to
