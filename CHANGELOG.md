@@ -5,25 +5,42 @@ Versions follow [Semantic Versioning](https://semver.org).
 
 ---
 
-## [1.6.7] — 2026-08-21
+## [1.7.0] — 2026-09-11
 
-**Makes Runtime Host recovery actionable and preserves the configured computer
-while it is repaired.**
-
-### Fixed
-
-- Recheck now discovers Claude Code and Git from common Homebrew, Nix, version-manager,
-  and user-level install locations on macOS and Linux.
-- Reinstall Runtime preserves the enrolled host identity, credential, configured tool
-  paths, local concurrency limit, repositories, and MCP configuration. It now reports
-  a useful recovery boundary instead of a generic “Unexpected error.”
+**Set Up This Computer installs the runtime on its own, and DigitalStack shows
+what every computer runs.**
 
 ### Added
 
-- **Advanced Runtime Settings** can verify absolute Claude Code and Git paths, set a
-  bounded local concurrency limit, and restart the same Runtime Host safely.
-- **Restart Runtime** verifies that the existing enrolled host returns with a fresh,
-  healthy heartbeat without replacing its managed runtime.
+- Pairing is the approval. A freshly set-up Mac asks DigitalStack to approve
+  the runtime it carries; when that exact build is a published release for the
+  Mac's chip, its local runtime deployment is created for it (with the
+  workspace's default Workforce profile) and resumed as soon as the install is
+  proven. No operator step remains between "Set Up This Computer" and work
+  arriving.
+- Runtimes shows each computer's model ("MacBook Pro · Apple M2 Max"), the
+  runtime build it runs against the latest published release, its install
+  state, and lets an administrator or the person who set it up rename it.
+- Diagnostics name the install: release published, install approved,
+  packaged install committed, deployment accepting work, running build is a
+  published release, device identity reported.
+- A browser without the desktop app gets the install guide with the release's
+  download for Apple silicon and Intel.
+
+### Fixed
+
+- A plan that licenses no local computers is told so ("can't be licensed on
+  this plan" → Billing) instead of "finish setup" looping.
+- Repair and reinstall of a working computer no longer stop at "not approved":
+  the deployment is paused for the install and resumed after it.
+- An updated desktop app installs its newer runtime on the next Set Up This
+  Computer without a forced reinstall.
+- Removing or replacing a registration retires its runtime deployment, so the
+  plan's runtime capacity is released and no Workforce profile keeps pointing
+  at a runtime that is gone.
+- A runtime whose registration was removed stops cleanly with a message
+  instead of retrying forever; a Mac that cannot reach DigitalStack gets a
+  clear refusal and nothing on it is changed.
 
 ---
 
