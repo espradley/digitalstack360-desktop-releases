@@ -5,6 +5,43 @@ Versions follow [Semantic Versioning](https://semver.org).
 
 ---
 
+## [1.7.3] — 2026-09-12
+
+**The runtime looks after itself: DigitalStack reconciles its installation
+on every launch, health is evidence, and problems are named.**
+
+### Added
+
+- A canonical installation manifest and reconciler. On every launch (and
+  after an update) DigitalStack compares what is installed with what this
+  version carries and converges the difference: an out-of-date runtime is
+  replaced, a stale service definition rewritten, wrong file modes
+  corrected, a stopped service started, an unregistered or outdated runtime
+  helper re-registered — without asking. Stale runtime versions are removed.
+- Health is evidence, on four local axes (identity, installation, runtime,
+  helper) plus connectivity. A daemon running the wrong build can no longer
+  read Ready. Connectivity probes the real paths (DigitalStack's machine
+  door and the AI gateway) and tells a network fault, an edge policy, a
+  missing machine identity and a revoked authorization apart.
+- The runtime helper reports which build it is; an older helper left running
+  by a previous version is replaced.
+- Computers are named by their own OS name ("Eddie's MacBook Pro"), never
+  `this-mac`; a name you choose in DigitalStack is kept.
+- "This computer is no longer authorized" is its own state with the way back,
+  distinct from any repair.
+- Copy Diagnostics produces one redacted support bundle: manifest versus
+  actual, every drift, the installation journal, launchd's view, the helper,
+  the paths and the log tails.
+
+### Fixed
+
+- Installation refusals say what happened and what to do, with the code kept
+  in the sentence.
+- A runtime upgrade no longer fails for a computer whose earlier incarnations
+  left unfinished work behind; containment is proven for the current one.
+
+---
+
 ## [1.7.2] — 2026-09-12
 
 **An updated DigitalStack replaces the runtime it left behind, and the runtime
