@@ -5,6 +5,19 @@ Versions follow [Semantic Versioning](https://semver.org).
 
 ---
 
+## [1.7.9] — 2026-09-13
+
+**The runtime answers a recheck from anywhere, reports a run that reached its budget for what it was, and honours a larger attempt budget.**
+
+### Added
+
+- Active runtime revalidation: when DigitalStack asks this computer to look again (a Recheck on the Runtime page from any machine, or the execution preflight finding a stale reading), the daemon re-probes its readiness on its next heartbeat instead of waiting for the five-minute timer. Each readiness position now carries the time this computer observed it.
+
+### Fixed
+
+- A run that Claude Code stopped at the attempt's budget (`error_max_budget_usd`) is reported as `budget_exhausted`, not as an unknown provider failure. The work item can say "paused — budget reached" and offer the retry, instead of "did not complete" and a person.
+- The per-attempt budget this computer will honour is $5, matching the control plane's attempt ceiling; a $1 ceiling refused any attempt above one dollar before it started.
+
 ## [1.7.8] — 2026-09-13
 
 **A fresh local runtime can do governed work: it receives the address of DigitalStack's tools from DigitalStack, and Repository Intelligence loads on the notarized build.**
