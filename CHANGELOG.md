@@ -5,6 +5,39 @@ Versions follow [Semantic Versioning](https://semver.org).
 
 ---
 
+## [1.7.5] — 2026-09-12
+
+**Second round of certification fixes; the full local repair matrix passes.**
+
+### Fixed
+
+- An installation attempt refused before anything changed no longer leaves an
+  unfinished-installation record that blocks every later attempt.
+- Automatic repair keeps fixing what it can (file modes, the service
+  definition, launchd) even when the runtime install itself was refused.
+- Reloading the service waits for launchd to actually unload and start it,
+  so a rewritten service definition cannot vanish a moment later.
+
+---
+
+## [1.7.4] — 2026-09-12
+
+**Certification fixes from the first destructive matrix on a real Mac.**
+
+### Fixed
+
+- A deleted or damaged service definition is rewritten and reloaded on the
+  spot; it was previously treated as a contradiction and left alone.
+- A runtime whose installed binary has gone missing is reinstalled instead of
+  being reported as already ready.
+- A version directory that lost its binary no longer blocks every later
+  install; it is set aside and the verified runtime installed in its place.
+- Housekeeping keeps the previous runtime version for rollback.
+- A computer without an MCP credential says so instead of reading as fully
+  ready.
+
+---
+
 ## [1.7.3] — 2026-09-12
 
 **The runtime looks after itself: DigitalStack reconciles its installation
