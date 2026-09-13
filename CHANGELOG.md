@@ -5,6 +5,20 @@ Versions follow [Semantic Versioning](https://semver.org).
 
 ---
 
+## [1.7.7] — 2026-09-13
+
+**Release-build certification fix: the runtime helper survives an upgrade (second attempt).**
+
+### Fixed
+
+- Upgrading the app no longer leaves the runtime helper unregistered. Once
+  macOS refuses a registration made while the previous one is still being
+  removed, it keeps refusing that same process; the app now makes the retry
+  from a fresh process, which registers at once. 1.7.6 retried in place and
+  was refused for the whole window.
+
+---
+
 ## [1.7.6] — 2026-09-13
 
 **Release-build certification fix: the runtime helper survives an upgrade.**
