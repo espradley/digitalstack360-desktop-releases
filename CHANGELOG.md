@@ -5,6 +5,28 @@ Versions follow [Semantic Versioning](https://semver.org).
 
 ---
 
+## [1.7.8] — 2026-09-13
+
+**A fresh local runtime can do governed work: it receives the address of DigitalStack's tools from DigitalStack, and Repository Intelligence loads on the notarized build.**
+
+### Fixed
+
+- A computer set up through "Set Up This Computer" now receives the address
+  of DigitalStack's tools from DigitalStack itself, at setup and again each
+  time the runtime starts. Previously the address was read from an
+  environment the app never provides, so AI Workers were launched with no
+  tools and could neither read their work item nor record a result; the
+  runtime now reports that gap as readiness ("DigitalStack tools are not
+  connected on this computer") until it is closed, and DigitalStack refuses
+  to place work on such a computer before anything is spent.
+- Repository Intelligence loads on the notarized build. The native modules
+  the runtime extracts are signed with the runtime's own Team ID before the
+  bundle is sealed, so `dlopen` no longer refuses them; the release proves it
+  by loading Repository Intelligence from the signed sidecar before
+  publishing.
+
+---
+
 ## [1.7.7] — 2026-09-13
 
 **Release-build certification fix: the runtime helper survives an upgrade (second attempt).**
