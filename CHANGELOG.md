@@ -5,6 +5,20 @@ Versions follow [Semantic Versioning](https://semver.org).
 
 ---
 
+## [1.7.6] — 2026-09-13
+
+**Release-build certification fix: the runtime helper survives an upgrade.**
+
+### Fixed
+
+- Upgrading the app no longer leaves the runtime helper unregistered. Replacing
+  the app and re-registering its helper in one step raced macOS removing the
+  previous registration ("Operation not permitted"); registration now waits
+  for the removal to settle and tries again, and a failure at launch is
+  reported instead of dropped.
+
+---
+
 ## [1.7.5] — 2026-09-12
 
 **Second round of certification fixes; the full local repair matrix passes.**
