@@ -5,6 +5,14 @@ Versions follow [Semantic Versioning](https://semver.org).
 
 ---
 
+## [1.7.10] — 2026-09-16
+
+**The run console reports what a run used, not what it cost DigitalStack.**
+
+### Changed
+
+- When a governed run finishes, its activity line reads "Execution usage finalized · 10 requests · 42.3k tokens" instead of the provider cost. The settlement this computer records on the activity feed no longer carries any dollar amount; the full metering receipt is still reported to DigitalStack's internal cost record.
+
 ## [1.7.9] — 2026-09-13
 
 **The runtime answers a recheck from anywhere, reports a run that reached its budget for what it was, and honours a larger attempt budget.**
