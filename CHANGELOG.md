@@ -5,6 +5,15 @@ Versions follow [Semantic Versioning](https://semver.org).
 
 ---
 
+## [1.7.11] — 2026-09-17
+
+**Fast-mode work stays with its governed Worker and starts only on a Runtime Profile that can perform the exact step.**
+
+### Fixed
+
+- Automated and explicitly selected Workers now remain the launch identity through continuation, recovery, readiness, and provider handoff instead of being replaced by UUID ordering.
+- The runtime refuses a commit-producing launch before the provider starts when its signed authority does not include repository write access.
+
 ## [1.7.10] — 2026-09-16
 
 **The run console reports what a run used, not what it cost DigitalStack.**
