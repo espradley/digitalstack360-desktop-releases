@@ -5,6 +5,23 @@ Versions follow [Semantic Versioning](https://semver.org).
 
 ---
 
+## [1.7.12] — 2026-09-27
+
+**A runtime that cannot start work says so at once, and Repository Intelligence reads more of the codebase.**
+
+### Fixed
+
+- The runtime hands back work it claimed but cannot verify or start, with the reason, instead of silently holding it until the claim lapses and picking the same work up again. Work it cannot start now ends in seconds with a named cause and no spend, rather than retrying for hours.
+- A run whose start was authorized but whose delivered provider credential does not match its signed contract is ended immediately with a named cause, instead of being left waiting with nothing to report on it.
+- Validation-only rechecks start again on current runtimes; they were refused because they carry no provider credential.
+- A provider failure reported inside a successful response stream keeps the provider's own error code and message (redacted) in the run's evidence, instead of an unknown failure.
+- An API key the provider rejects is reported as a provider authentication failure, not as a sign-in that needs reconnecting.
+- Setting up a computer that pinned Workers still depend on names the actual remedy — remove the computer from each Runtime Profile that lists it.
+
+### Added
+
+- Repository Intelligence negotiates a richer structural extraction (ri-structural.v4) when the control plane supports it: JavaScript files, files of 32 KB and more, HTTP calls, configuration references (credentials stripped), web routes, queues and events, schedules, GraphQL, TOML, Liquid, YAML and theme JSON. Without that support it extracts exactly as before.
+
 ## [1.7.11] — 2026-09-17
 
 **Fast-mode work stays with its governed Worker and starts only on a Runtime Profile that can perform the exact step.**
